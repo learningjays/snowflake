@@ -25,6 +25,7 @@ orders_enriched as (
 lineitems_agg as (
     -- Roll up line-level metrics to the order level
     select
+        {{ dbt_utils.generate_surrogate_key(['order_id']) }} AS order_sk,
         order_id,
         count(*)                     as line_item_count,
         sum(quantity)                as total_quantity,
@@ -36,7 +37,7 @@ lineitems_agg as (
         max(ship_date)               as last_ship_date,
         count_if(return_flag = 'R')  as returned_line_count
     from {{ ref('stg_tpch__lineitems') }}
-    group by 1
+    group by order_id
 ),
 
 final as (
