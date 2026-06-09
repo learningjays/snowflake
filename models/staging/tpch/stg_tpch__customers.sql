@@ -9,7 +9,6 @@ with
 source as (
     select * from {{ source('tpch', 'customer') }}
 ),
-
 renamed as (
     select
         -- Primary key
@@ -30,3 +29,15 @@ renamed as (
 )
 
 select * from renamed
+where customer_id <> '150000'
+union all
+select
+150000
+,10	
+,'Customer#000150000'
+,'DD7m6OBUJqlbTpiYmzK9SYuJBG266UKoAsKH'	
+,'20-354-401-2016' 
+,2530.68	
+,'MACHINERY'
+,'kages nag quickly for the regular theodolites. carefully even pin'
+
