@@ -119,6 +119,9 @@ models:
       - name: account_balance
         description: Current account balance.
       - name: market_segment
-        description: Customer's market segment (e.g. AUTOMOBILE, BUILDING).
+        description: Customer's market segment (e.g. AUTOMOBILE, BUILDING).     
+        tests:
+          - accepted_values:
+              values: ['AUTOMOBILE','BUILDING','FURNITURE','HOUSEHOLD','MACHINERY']
       - name: customer_comment
         description: Free-text comment from source.

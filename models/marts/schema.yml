@@ -1,0 +1,18 @@
+
+models:
+  - name: fct_orders
+    description: Fact table for orders
+
+    columns:
+      - name: order_sk
+        description: Surrogate key
+        tests:
+          - not_null
+          - unique:
+              store_failures: true
+
+      - name: order_id
+        description: Natural order identifier
+        tests:
+          - not_null
+          - unique
